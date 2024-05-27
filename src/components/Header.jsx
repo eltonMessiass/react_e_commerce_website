@@ -8,10 +8,10 @@ function Header() {
       <h1 >
         <Link to="/" className='text-4xl text-white'>Store</Link>
       </h1>
-      <div className='flex flex-row items-center relative text-white'>
+      <Link to="/cart" className='flex flex-row items-center relative text-white'>
         <LuShoppingCart/>
         <span>0</span>
-    </div>
+    </Link>
     </div>
   )
 }
