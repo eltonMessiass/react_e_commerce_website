@@ -4,7 +4,7 @@ import { LuShoppingCart } from "react-icons/lu";
 
 function Header() {
   return (
-    <div className='h-12 w-full bg-gray-800 flex flex-row justify-between px-4'>
+    <div className='h-12 w-full bg-gray-800 flex flex-row justify-between px-4 fixed'>
       <h1 >
         <Link to="/" className='text-4xl text-white'>Store</Link>
       </h1>
