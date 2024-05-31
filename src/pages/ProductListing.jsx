@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import banner from '../../public/banner.jpg'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Pagination from '../components/Pagination'
 
 function ProductListing() {
   const [product, setProduct] = useState([])
@@ -23,26 +25,53 @@ function ProductListing() {
     getProducts();
   },[])
   return (
-    <div className='flex flex-col'>
+    <div className='flex  flex-col bg-black'>
   <Header/>
 
-  <div className='overflow-auto'>
-    <div className='grid grid-cols-4 px-6 mt-8 w-full items-center justify-center'>
-      {product.map(product => (
-        <Link to="/productDetail" key={product.id} className='mx-6 w-60 h-70 my-9 border border-gray-800'>
-          <img src={`http://127.0.0.1:8000/${product.image_url}/`} alt="" className='w-full h-56 '/>
-          <div className='flex flex-col justify-between gap-1 mt-1'>
-            <div className='flex flex-row justify-between'> 
-              <p className='truncate text-xl ml-2'>{product.name}</p>
-    
-              <span className='text-lime-600 text-base mr-2'>${product.price}</span>
+  <div className='overflow-hidden mt-3'>
+    <div className='grid lg:grid-cols-4 md:grid-cols-2 px-6 mt-20 w-full items-center justify-center'>
+      {product.map(product => (  
+
+<div key={product.id} className="flex flex-col h-[400px] w-auto max-w-sm m-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <Link className='w-full'  to="/productDetails" href="">
+        <img className="p-2 rounded-t-lg h-fit" src={`http://localhost:8000/${product.image_url}`} alt="product image" />
+    </Link>
+    <div className="px-5 pb-5">
+        <a href="#">
+            <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">{product.name}</h5>
+        </a>
+        <div className="flex items-center mt-2.5 mb-5">
+            <div className="flex items-center space-x-1 rtl:space-x-reverse">
+                <svg className="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg className="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg className="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg className="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg className="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
             </div>
-            <Link to="/cart" className='border bg-gray-800 w-full text-white text-center'>Add to Cart</Link>
-          </div>
-        </Link>
+            <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
+        </div>
+        <div className="flex items-center justify-between">
+            <span className="text-3xl font-bold text-gray-900 dark:text-white">${product.price}</span>
+            <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+        </div>
+    </div>
+</div>
+
       ))}
     </div>
   </div>
+
+  <Pagination/>
   
   <Footer />
 </div>
